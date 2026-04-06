@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gaxiolasonline | Nivel Empresa</title>
+  <meta name="description" content="gaxiolasonline - Sistema A.T.R.A.E. empresarial para atracción, prospección, conversión y cierre." />
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg-soft:#0d1830;
+      --card:#101d38;
+      --card-2:#132447;
+      --text:#f4f8ff;
+      --muted:#b7c4df;
+      --line:rgba(255,255,255,.09);
+      --accent:#5eead4;
+      --accent-2:#60a5fa;
+      --gold:#f5c76d;
+      --shadow:0 24px 60px rgba(0,0,0,.35);
+      --radius:24px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(96,165,250,.18), transparent 28%),
+        radial-gradient(circle at 80% 0%, rgba(94,234,212,.12), transparent 26%),
+        linear-gradient(180deg, #060d1a, #0a1326 40%, #08101e 100%);
+      line-height:1.55;
+    }
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+    .topbar{
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter: blur(16px);
+      background:rgba(7,17,31,.78);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      height:76px; display:flex; align-items:center; justify-content:space-between; gap:18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:14px; font-weight:800; letter-spacing:.4px;
+    }
+    .brand-badge{
+      width:42px; height:42px; border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#04101d; display:grid; place-items:center; font-weight:900;
+      box-shadow:var(--shadow);
+    }
+    .nav-links{display:flex; gap:18px; flex-wrap:wrap; align-items:center}
+    .nav-links a{color:var(--muted); font-size:14px}
+    .nav-links a:hover{color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px 20px; border-radius:16px; font-weight:700; transition:.18s ease;
+      border:1px solid transparent;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#07111f; box-shadow:var(--shadow);
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.04);
+      border-color:var(--line); color:var(--text);
+    }
+    .btn-gold{
+      background:linear-gradient(90deg,#ffe3a1,var(--gold));
+      color:#211300; box-shadow:var(--shadow);
+    }
+
+    .hero{
+      padding:72px 0 34px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-grid{
+      display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 14px; border-radius:999px;
+      border:1px solid rgba(94,234,212,.28);
+      background:rgba(94,234,212,.08); color:var(--accent); font-size:13px;
+      letter-spacing:.35px; margin-bottom:16px;
+    }
+    h1{
+      margin:0 0 14px; font-size:62px; line-height:.98;
+      letter-spacing:-1.2px;
+    }
+    .hero-copy{
+      color:var(--muted); font-size:19px; max-width:720px; margin:0 0 28px;
+    }
+    .hero-actions{display:flex; gap:14px; flex-wrap:wrap}
+    .hero-panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line); border-radius:30px; padding:22px;
+      box-shadow:var(--shadow);
+    }
+    .hero-panel h3{margin:0 0 12px; font-size:24px}
+    .stats{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px}
+    .stat{
+      padding:16px; border-radius:18px; background:rgba(255,255,255,.04); border:1px solid var(--line);
+    }
+    .stat .num{font-size:28px; font-weight:800; margin-bottom:6px}
+    .stat .lbl{font-size:13px; color:var(--muted)}
+    section{padding:30px 0}
+    h2{font-size:36px; margin:0 0 12px}
+    .section-copy{color:var(--muted); max-width:790px; margin:0 0 20px}
+
+    .cards{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:18px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+      box-shadow:var(--shadow);
+    }
+    .card h3{margin:0 0 10px; font-size:22px}
+    .card p{margin:0 0 16px; color:var(--muted)}
+    .tag{
+      display:inline-block; padding:7px 11px; border-radius:999px; font-size:12px;
+      background:rgba(96,165,250,.12); color:#c8ddff; border:1px solid rgba(96,165,250,.22);
+      margin-bottom:12px;
+    }
+
+    .system-grid{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px;
+    }
+    .phase{
+      padding:18px; border-radius:22px; background:var(--bg-soft); border:1px solid var(--line);
+    }
+    .phase b{
+      display:block; color:var(--accent); font-size:16px; margin-bottom:8px;
+    }
+
+    .feature-grid{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px;
+    }
+    .feature{
+      padding:22px; border-radius:22px; border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(19,36,71,.75), rgba(12,23,46,.8));
+    }
+    .feature h3{margin:0 0 8px; font-size:22px}
+    .feature p{margin:0; color:var(--muted)}
+
+    .videos{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px;
+    }
+    .video-box{
+      border-radius:24px; padding:24px; min-height:180px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+    }
+    .video-box h3{margin:0 0 8px}
+    .video-box p{color:var(--muted); margin:0}
+
+    .cta-band{
+      margin-top:10px;
+      background:linear-gradient(90deg, rgba(94,234,212,.12), rgba(96,165,250,.12));
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:28px; padding:28px;
+      display:grid; grid-template-columns:1fr auto; gap:18px; align-items:center;
+      box-shadow:var(--shadow);
+    }
+    .cta-band h3{margin:0 0 8px; font-size:28px}
+    .cta-band p{margin:0; color:var(--muted)}
+
+    footer{
+      margin-top:36px; border-top:1px solid var(--line); padding:28px 0 40px;
+      color:var(--muted);
+    }
+    .footer-grid{
+      display:grid; grid-template-columns:1fr auto; gap:18px; align-items:center;
+    }
+
+    .floating-wa{
+      position:fixed; right:18px; bottom:18px; z-index:999;
+      width:62px; height:62px; border-radius:50%;
+      display:grid; place-items:center;
+      background:linear-gradient(135deg,#25d366,#15b954);
+      color:white; font-size:28px; font-weight:800;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      border:2px solid rgba(255,255,255,.22);
+    }
+
+    .small{font-size:13px;color:var(--muted)}
+    .divider{height:1px;background:var(--line);margin:12px 0 0}
+
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr}
+      h1{font-size:48px}
+      .cta-band{grid-template-columns:1fr}
+      .nav-links{display:none}
+    }
+    @media (max-width:640px){
+      h1{font-size:38px}
+      .hero-copy{font-size:17px}
+      .btn{width:100%}
+      .hero-actions{flex-direction:column}
+      .stats{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="brand-badge">G</div>
+        <div>
+          <div>gaxiolasonline</div>
+          <div class="small">Sistema A.T.R.A.E. nivel empresa</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#sistema">Sistema</a>
+        <a href="#biblioteca">Biblioteca</a>
+        <a href="#ventajas">Ventajas</a>
+        <a href="#videos">Videos</a>
+      </div>
+      <a class="btn btn-secondary" href="https://gaxiolas.com" target="_blank" rel="noopener">Ir a Vital Health</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Marca central • operación profesional • estructura duplicable</div>
+        <h1>gaxiolasonline<br>como plataforma de negocio</h1>
+        <p class="hero-copy">
+          Esta versión organiza tu ecosistema completo con imagen empresarial:
+          atracción, embudos, autoridad, PDFs, grupo de WhatsApp y acceso directo
+          a gaxiolas.com, todo bajo una presencia más sólida, limpia y confiable.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#biblioteca">Entrar a la biblioteca</a>
+          <a class="btn btn-secondary" href="https://chat.whatsapp.com/JpNiKrkUBq5JV97ZVGyjoM" target="_blank" rel="noopener">Entrar al grupo WhatsApp</a>
+          <a class="btn btn-gold" href="https://gaxiolas.com" target="_blank" rel="noopener">Explorar Vital Health</a>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <h3>Centro de mando A.T.R.A.E.</h3>
+        <p class="section-copy">
+          Ya no es solo una colección de ideas. Ahora se presenta como una estructura
+          de marca donde cada pieza cumple una función estratégica.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <div class="num">5</div>
+            <div class="lbl">documentos estratégicos integrados</div>
+          </div>
+          <div class="stat">
+            <div class="num">1</div>
+            <div class="lbl">ruta clara desde atracción hasta cierre</div>
+          </div>
+          <div class="stat">
+            <div class="num">24/7</div>
+            <div class="lbl">presencia digital lista para compartirse</div>
+          </div>
+          <div class="stat">
+            <div class="num">PRO</div>
+            <div class="lbl">imagen más seria y más empresarial</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="sistema">
+      <h2>La ruta del sistema A.T.R.A.E.</h2>
+      <p class="section-copy">
+        La lógica del sitio es simple: atraer atención, capturar contactos, educar con autoridad,
+        activar seguimiento y mover a la acción con una oferta y una conversación de cierre.
+      </p>
+      <div class="system-grid">
+        <div class="phase"><b>1. Atracción</b>Contenido, mensajes, storytelling y posicionamiento para despertar interés.</div>
+        <div class="phase"><b>2. Captura</b>Landing, lead magnet y biblioteca para convertir curiosidad en lead.</div>
+        <div class="phase"><b>3. Relación</b>PDFs, seguimiento y WhatsApp como herramienta de confianza.</div>
+        <div class="phase"><b>4. Acción</b>Oferta, presentación y cierre sin perseguir prospectos.</div>
+        <div class="phase"><b>5. Escala</b>Duplicación del sistema para operar con estructura y visión.</div>
+      </div>
+    </section>
+
+    <section id="biblioteca">
+      <h2>Biblioteca empresarial del sistema</h2>
+      <p class="section-copy">
+        Toda tu documentación clave en un solo lugar. Esta parte puede servirte como
+        base de presentación, centro de recursos o vitrina de autoridad.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="tag">Estructura base</div>
+          <h3>Sistema Premium de Arbitraje AI</h3>
+          <p>Documento semilla con visión, posicionamiento, motor de contenido, funnel y monetización.</p>
+          <a class="btn btn-primary" href="Sistema_Arbitraje_AI_Gaxiolas.pdf">Abrir PDF</a>
+        </article>
+
+        <article class="card">
+          <div class="tag">Guía maestra</div>
+          <h3>Biblia Estratégica Gaxiolas 2026</h3>
+          <p>Manual principal para explicar el sistema, su lógica y su implementación como operación seria.</p>
+          <a class="btn btn-primary" href="Biblia_Estrategica_Gaxiolas_2026.pdf">Abrir PDF</a>
+        </article>
+
+        <article class="card">
+          <div class="tag">Embudo</div>
+          <h3>Embudo Completo Gaxiolas 2026</h3>
+          <p>Mapa completo del flujo desde contenido y captura hasta seguimiento y cierre.</p>
+          <a class="btn btn-primary" href="Embudo_Completo_Gaxiolas_2026.pdf">Abrir PDF</a>
+        </article>
+
+        <article class="card">
+          <div class="tag">Conversión</div>
+          <h3>Landing Page Gaxiolas 2026</h3>
+          <p>Texto base para una página de venta clara, directa y lista para adaptarse a tu oferta.</p>
+          <a class="btn btn-primary" href="Landing_Page_Gaxiolas_2026.pdf">Abrir PDF</a>
+        </article>
+
+        <article class="card">
+          <div class="tag">Cierre total</div>
+          <h3>Sistema Completo Gaxiolas 2026</h3>
+          <p>Resumen ejecutivo del sistema entero: identidad, flujo, ejecución, cierre y escala.</p>
+          <a class="btn btn-primary" href="Sistema_Completo_Gaxiolas_2026.pdf">Abrir PDF</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="ventajas">
+      <h2>Qué gana tu marca con esta versión</h2>
+      <p class="section-copy">
+        El objetivo aquí no es solo verse bien. Es proyectar orden, confianza y una estructura
+        más digna de una empresa digital que de una colección suelta de archivos.
+      </p>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Presencia más sólida</h3>
+          <p>Tu sistema se presenta con estética premium, mejor jerarquía visual y sensación de marca real.</p>
+        </div>
+        <div class="feature">
+          <h3>Ruta más clara</h3>
+          <p>Cada visitante entiende qué sigue: leer, entrar a WhatsApp, visitar gaxiolas.com o avanzar en el sistema.</p>
+        </div>
+        <div class="feature">
+          <h3>Uso más profesional</h3>
+          <p>Te sirve como centro de recursos para mostrar autoridad, apoyar cierres y ordenar materiales estratégicos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <h2>Sección para tus futuros videos</h2>
+      <p class="section-copy">
+        Como Sora ya no es la opción actual para ti, esta zona queda lista para que después agregues
+        tus nuevos videos con otra herramienta cuando decidas cuál usar.
+      </p>
+      <div class="videos">
+        <div class="video-box">
+          <h3>Video 1 • Presentación</h3>
+          <p>Espacio pensado para tu mensaje de autoridad, historia o invitación principal.</p>
+        </div>
+        <div class="video-box">
+          <h3>Video 2 • Sistema</h3>
+          <p>Aquí después puedes mostrar cómo funciona A.T.R.A.E. paso por paso.</p>
+        </div>
+        <div class="video-box">
+          <h3>Video 3 • Cierre</h3>
+          <p>Zona reservada para una pieza más directa de decisión y llamado a la acción.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="cta-band">
+        <div>
+          <h3>Lleva a tus prospectos del interés a la acción</h3>
+          <p>
+            Usa esta plataforma como tu base central: biblioteca, autoridad, ruta estratégica,
+            grupo de WhatsApp y enlace directo a gaxiolas.com.
+          </p>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="https://chat.whatsapp.com/JpNiKrkUBq5JV97ZVGyjoM" target="_blank" rel="noopener">Entrar al grupo</a>
+          <a class="btn btn-secondary" href="https://gaxiolas.com" target="_blank" rel="noopener">Abrir gaxiolas.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <div style="font-weight:800; color:var(--text);">gaxiolasonline</div>
+        <div class="small">Sistema A.T.R.A.E. • presencia empresarial • estructura digital • autoridad y conversión</div>
+      </div>
+      <div class="small">Diseñado para organizar tu ecosistema de negocio en una sola plataforma.</div>
+    </div>
+  </footer>
+
+  <a class="floating-wa" href="https://chat.whatsapp.com/JpNiKrkUBq5JV97ZVGyjoM" target="_blank" rel="noopener" aria-label="WhatsApp">W</a>
+</body>
+</html>
